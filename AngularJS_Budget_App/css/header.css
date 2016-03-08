@@ -1,0 +1,32 @@
+#usernameDisplayed {
+    float:left;
+    font-size: large;
+    padding-top: 10px;
+}
+#todaysDateDisplayed {
+    float: right;
+    font-size: large;
+    padding-top: 10px;
+}
+
+.nav-center {  
+  text-align: center;
+}
+ul.nav {
+    display: inline-block;
+}
+.navbar{
+    margin-bottom: 0px;
+}
+
+
+.overviewHeader{
+    text-align: center;
+    font-weight: 700;
+}
+
+.financialViewLabel {
+    text-align: center;  
+    font-size: large;
+    padding-top: 10px;
+}

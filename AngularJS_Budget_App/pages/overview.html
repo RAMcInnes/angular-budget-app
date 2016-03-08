@@ -1,0 +1,87 @@
+<div id="usernameDisplayed">
+    {{ username }}
+</div>
+<div id="todaysDateDisplayed">
+     {{ currentDate }}
+</div>
+<nav class="navbar navbar-static-top">
+    <div class="nav-center">
+        <ul class="nav nav-tabs">
+            <li role="presentation" class="active"> <a href="#/overview">Overview</a></li>
+            <li role="presentation"> <a href="#/transactions">Transactions</a></li>
+            <li role="presentation"> <a href="#/analysis">Analysis</a></li>
+            <li role="presentation"> <a href="#/settings">Settings</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="row">
+    <div class="row">
+        <!-- GET TOGGLE TO WORK 
+        <input type="checkbox" checked data-toggle="toggle" data-on="Monthly" data-off="Yearly">  
+        -->
+        <h1 class="overviewHeader col-md-12">Financial View</h1>
+    </div>
+    <div class="row">
+        <div class="financialViewLabel col-md-6">Total Money:</div>
+        <div id="totalMoneyValue" class="totalMoney col-md-6">$12560</div>
+    </div>
+    <div class="row">
+        <div class="financialViewLabel col-md-6">Total Money from <span id="fromDateLabel">{{currentMonth}} 1</span>: </div>
+        <div id="totalMoneyFromValue" class="totalMoney col-md-6">$10000</div>
+    </div>
+    <div class="row">
+        <div class="financialViewLabel col-md-6">
+            <span class="financialMonthOrYear">Monthly / Yearly</span> 
+            <span>Profit:</span>
+        </div>
+        <div id="profitValue" class="totalMoney col-md-6">$500</div>
+    </div>
+    <div class="row">
+        <div class="financialViewLabel col-md-6">
+            <span class="financialMonthOrYear">Monthly / Yearly</span> 
+            <span id="incomeButton" title="See Itemized Income">Income</span>:
+        </div>
+        <div id="incomeValue" class="totalMoney col-md-6">$2500</div>
+    </div>
+    <div class="row">
+        <div class="financialViewLabel col-md-6">
+            <span class="financialMonthOrYear">Monthly / Yearly</span> 
+            <span id="expenseButton" title="See Itemized Expense">Expense</span>:
+        </div>
+        <div id="expenseValue" class="totalMoney col-md-6">$2000</div>
+    </div>
+    <div class="row">
+        <h1 class="overviewHeader col-md-12">Budget View</h1>
+    </div>
+    <div class="row">
+        <h3 id="budgetBeingViewed" class="col-md-12">{{budgetBeingViewed}}</h3>
+    </div>
+    <div class="row">
+        <div id="budgetViewWell" class="well">
+            <div id="budgetViewWellHeader" class="row">
+                <h4 class="col-md-6">Item</h4>
+                <h4 class="col-md-6">Value</h4>
+            </div>
+            
+            <div class="shownListDiv" ng-repeat="item in shownList">
+                <div class="row">
+                    <div class="budgetInput col-md-4 col-md-offset-1">{{item.name}}</div>
+                    <div class="budgetInput col-md-4 col-md-offset-2">${{item.value}}</div>
+                    <span class="glyphicon glyphicon-remove delete col-md-1" ng-click="removeItem()"></span>
+                </div>
+            </div>
+            
+            <div id="budgetInputDiv" class="hidden">
+                <input type="text" class="budgetInput col-md-4 col-md-offset-1" value="Item Name" ng-model="budgetInputName">
+                <input type="text" class="budgetInput col-md-4 col-md-offset-2" value="Item Value" ng-model="budgetInputValue">
+                <span class="glyphicon glyphicon-remove reject" ng-click="cancelItem()"></span>
+                <span class="glyphicon glyphicon-ok accept" ng-click="addItem()"></span>
+                
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <button class="btn btn-success glyphicon glyphicon-plus addIncomeOrExpenseButtons col-xs-6" ng-click="showBudgetRow('income')"> Income</button>
+        <button class="btn btn-danger glyphicon glyphicon-minus addIncomeOrExpenseButtons col-xs-6" ng-click="showBudgetRow('expense')"> Expense</button>
+        </div>
+</div>

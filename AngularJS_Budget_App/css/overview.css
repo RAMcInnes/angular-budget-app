@@ -1,0 +1,75 @@
+#incomeValue {
+    color: green;
+}
+#incomeButton{
+    color: blue;
+    cursor: default;
+}
+#incomeButton:hover{
+    color: green;
+    cursor: pointer;
+}
+#expenseValue {
+    color: red;
+}
+#expenseButton{
+    color: blue;
+    cursor: default;
+}
+#expenseButton:hover{
+    color: red;
+    cursor: pointer;
+}
+
+#budgetBeingViewed{
+    text-align: center;
+    margin: 5px;
+    font-style: italic;
+}
+
+.addIncomeOrExpenseButtons{
+    height: 10%;
+}
+
+.totalMoney {
+    text-align: center;  
+    font-size: large;
+    padding-top: 10px;
+}
+
+#budgetViewWellHeader{
+    text-align: center;
+}
+
+.wellItem{
+    height: 30px;
+}
+
+#budgetInputDiv{
+    height: 30px;
+}
+
+.hidden {
+    display: none;
+}
+
+.accept {
+    border: solid;
+    border-radius: 10px;
+    color: green;
+    cursor: pointer;
+    float: right;
+}
+
+.reject{
+    border: solid;
+    border-radius: 10px;
+    color: red;   
+    float: right;
+    cursor: pointer;
+}
+
+.delete{
+    color: red;   
+    cursor: pointer;
+}
