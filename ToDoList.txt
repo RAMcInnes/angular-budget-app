@@ -1,0 +1,36 @@
+Angular Budget App To-Do List
+
+DONE
+
+- Username (Robert)
+- Current Date
+	- Day Month Date Year
+- Tabs
+	- Overview, Transactions, Analysis, Setting
+
+- Overview Tab
+	- Financial View
+		- Total Money
+		- Total Money as of 1st of the Current Month [?]
+		- Profit
+		- Income
+			- Upon click, show itemized income list 
+		- Expense
+			- Upon click, show itemized expense list
+	- Budget View
+		- Item (name)
+		- Value (in $)
+	- Income / Expense Buttons
+		- Income (green) will bring up income list to be added to
+		- Expense (red) will bring up expense list to be added to
+			
+TO DO
+
+	- Use localStorage to save values in incomeList and expenseList
+	- Values($) in Financial View reflect saved transactions 
+	- I would eventually like the Profit, Income and Expense 
+		to switch between Yearly and Monthly displays
+	- [BOOTSTRAP]
+		- Make scalable for Mobile / iPAD
+		- Clean up look
+		- Color improvement 
