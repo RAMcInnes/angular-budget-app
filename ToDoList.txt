@@ -27,6 +27,13 @@ DONE
 TO DO
 
 	- Use localStorage to save values in incomeList and expenseList
+	
+	- Link Profit, Income and Expense values to reflect values stored in incomeList and expenseList
+	- For now, totalMoney will be a set value, but obviously will be changeable in the future.
+	
+	- Item Names should only be allowed to be Letters 
+	- Item Values should only be allowed to be Numbers 
+	
 	- Values($) in Financial View reflect saved transactions 
 	- I would eventually like the Profit, Income and Expense 
 		to switch between Yearly and Monthly displays

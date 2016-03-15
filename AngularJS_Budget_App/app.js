@@ -17,6 +17,9 @@ budgetApp.controller('overviewController', ['$scope',"financialService","budgetS
     // The current Budget List being shown
     // Either "incomeList" or "expenseList"
     $scope.shownList = [];
+    // Initalize incomeList and expenseList
+    budgetService.initIncomeList();
+    budgetService.initExpenseList();
     
     // Ensures only 1 item can be added at a time
     $scope.addingItem = false;
@@ -69,14 +72,14 @@ budgetApp.controller('overviewController', ['$scope',"financialService","budgetS
     $scope.showIncome = function() {
         $scope.budgetBeingViewed = "Income";
         
-        $scope.shownList = budgetService.incomeList;          
+        $scope.shownList = budgetService.getIncomeList();;          
     }
     
     /* Displays "expenseList" within the display area (well) */
     $scope.showExpense = function() {
         $scope.budgetBeingViewed = "Expense";
         
-        $scope.shownList = budgetService.expenseList;
+        $scope.shownList = budgetService.getExpenseList();
     }
     
     /* Adds the contents of the Input Row to the appropriate list */
@@ -99,7 +102,8 @@ budgetApp.controller('overviewController', ['$scope',"financialService","budgetS
         // Create a new Object with the Item Name and Item Value
         var newItem = {
             name: $scope.budgetInputName,
-            value: $scope.budgetInputValue
+            value: $scope.budgetInputValue,
+            date: (new Date).toDateString()
         };
         
         // Add Object to appropriate list
@@ -111,6 +115,9 @@ budgetApp.controller('overviewController', ['$scope',"financialService","budgetS
             budgetService.expenseList.push(newItem); 
 //            console.log("expenseList:" + budgetService.expenseList);
         }
+        
+        localStorage.setItem("incomeList", budgetService.incomeList);
+        localStorage.setItem("expenseList", budgetService.expenseList);
         
         // Resets the Input Boxes after Item is added
         $scope.budgetInputName = "";
@@ -211,8 +218,29 @@ budgetApp.service('financialService', function() {
 });
 budgetApp.service('budgetService', function() {
     
-    this.incomeList = [];
-    this.expenseList = [];
+    this.initIncomeList = function() {
+        if(localStorage.getItem("incomeList")){
+            this.incomeList = localStorage.getItem("incomeList");
+        }
+        else {
+            this.incomeList = [];
+        }
+    }
+    this.initExpenseList = function() {
+        if(localStorage.getItem("expenseList")){
+            this.expenseList = localStorage.getItem("expenseList");
+        }
+        else {
+            this.expenseList = [];
+        }
+    }
+    
+    this.getIncomeList = function() {
+        return this.incomeList;
+    }
+    this.getExpenseList = function() {
+        return this.expenseList;
+    }
 });
 
 
