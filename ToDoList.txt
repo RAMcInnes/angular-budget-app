@@ -35,6 +35,11 @@ TO DO
 	- Item Values should only be allowed to be Numbers 
 	
 	- Values($) in Financial View reflect saved transactions 
+
+	- Move Controller(s) to own file
+	- Move Services to own file
+	- Move Directives to own file
+
 	- I would eventually like the Profit, Income and Expense 
 		to switch between Yearly and Monthly displays
 	- [BOOTSTRAP]

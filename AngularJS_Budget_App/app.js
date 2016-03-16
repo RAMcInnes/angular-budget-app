@@ -109,11 +109,9 @@ budgetApp.controller('overviewController', ['$scope',"financialService","budgetS
         // Add Object to appropriate list
         if($scope.budgetBeingViewed === "Income") {
             budgetService.incomeList.push(newItem);
-//            console.log("incomeList:" + budgetService.incomeList);
         }
         else if($scope.budgetBeingViewed === "Expense") {
             budgetService.expenseList.push(newItem); 
-//            console.log("expenseList:" + budgetService.expenseList);
         }
         
         localStorage.setItem("incomeList", budgetService.incomeList);
@@ -133,12 +131,6 @@ budgetApp.controller('overviewController', ['$scope',"financialService","budgetS
         $scope.budgetInputName = "";
         $scope.budgetInputValue = "";
     }
-    
-    
-//    $scope.$watch('city', function() {
-//           
-//        };
-//    });
     
 }]);
 
@@ -251,28 +243,10 @@ budgetApp.directive("budgetItem", function() {
        templateUrl: 'Directives/weatherReport.html',
        replace: true,
        scope: {
-           weatherDay: "=", // Object
-           convertToStandard: "&", // Function
-           convertToDate: "&", // Function
-           dateFormat: "@" // Variable
+           _____: "=", // Object
+           _____: "&", // Function
+           _____: "&", // Function
+           _____: "@" // Variable
        }
    } 
 });
-/*
- * Commenting these out until I get "overviewController" done
-
-budgetApp.directive("transactionItem", function() {
-   return {
-       restrict: 'E',
-       templateUrl: 'Directives/weatherReport.html',
-       replace: true,
-       scope: {
-           weatherDay: "=", // Object
-           convertToStandard: "&", // Function
-           convertToDate: "&", // Function
-           dateFormat: "@" // Variable
-       }
-   } 
-});
-
-*/
