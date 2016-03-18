@@ -1,6 +1,6 @@
 // CONTROLLERS
 
-budgetApp.controller('overviewController', ['$scope',"financialService","budgetService", function($scope,financialService,budgetService) {
+budgetApp.controller('overviewController', ['$scope', 'financialService', 'budgetService', function ($scope, financialService, budgetService) {
     // Header
     $scope.username = "Robert McInnes";
     $scope.currentDate = new Date();
@@ -18,6 +18,12 @@ budgetApp.controller('overviewController', ['$scope',"financialService","budgetS
     budgetService.initIncomeList();
     budgetService.initExpenseList();
     
+    // Calculate (Show) Money Amounts
+    financialService.calculateTotalMoney();
+    financialService.calculateProfit();
+    financialService.calculateIncome();
+    financialService.calculateExpense();
+    
     // Ensures only 1 item can be added at a time
     $scope.addingItem = false;
     // The Item's Name and Value
@@ -25,16 +31,16 @@ budgetApp.controller('overviewController', ['$scope',"financialService","budgetS
     $scope.budgetInputValue = "";
     
     // Calculated Values
-    $scope.totalMoney = financialService.totalMoney;   
+    $scope.totalMoney = financialService.totalMoney;  
     $scope.profit = financialService.profit;
     $scope.income = financialService.income;
-    $scope.expenses = financialService.expenses;
+    $scope.expense = financialService.expense;
     
 
     /* Shows the Input Item Row that allows users to add a new item
      * to either the "Income" or "Expense" list
      */
-    $scope.showBudgetRow = function(type) {
+    $scope.showBudgetRow = function (type) {
         if($scope.addingItem) {
             return;
         }
@@ -53,10 +59,10 @@ budgetApp.controller('overviewController', ['$scope',"financialService","budgetS
         
         // Depending on which button is pressed ("Income" or "Expense),
         // sets the current "shownList" to the appropriate list
-        if(type === "income"){
+        if(type === "income") {
             $scope.showIncome();
         }
-        else if(type === "expense"){
+        else if(type === "expense") {
             $scope.showExpense();
         }
         
@@ -69,7 +75,7 @@ budgetApp.controller('overviewController', ['$scope',"financialService","budgetS
     $scope.showIncome = function() {
         $scope.budgetBeingViewed = "Income";
         
-        $scope.shownList = budgetService.getIncomeList();;          
+        $scope.shownList = budgetService.getIncomeList();          
     }
     
     /* Displays "expenseList" within the display area (well) */
@@ -106,10 +112,26 @@ budgetApp.controller('overviewController', ['$scope',"financialService","budgetS
         // Add Object to appropriate list
         if($scope.budgetBeingViewed === "Income") {
             budgetService.incomeList.push(newItem);
+            
+            financialService.calculateProfit();
+            financialService.calculateIncome();
         }
         else if($scope.budgetBeingViewed === "Expense") {
-            budgetService.expenseList.push(newItem); 
+            budgetService.expenseList.push(newItem);
+            
+            financialService.calculateProfit();
+            financialService.calculateExpense();
         }
+        
+        /* CAN'T SET LOCALSTORAGE TO LIST, MUST BE STRING 
+        
+            FIGURE OUT NEXT 
+        
+        
+        */
+        
+        
+        
         
         localStorage.setItem("incomeList", budgetService.incomeList);
         localStorage.setItem("expenseList", budgetService.expenseList);
@@ -133,7 +155,8 @@ budgetApp.controller('overviewController', ['$scope',"financialService","budgetS
 
 var getMonth = function(month){
     switch(month){
-        case 0: return "Jan";
+        case 0: 
+            return "Jan";
         case 1: return "Feb";
         case 2: return "Mar";
         case 3: return "Apr";
